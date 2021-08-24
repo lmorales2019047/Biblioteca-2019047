@@ -7,4 +7,4 @@ mongoose.connect("mongodb://ufldqtnfeky4mgmpcwvy:2UkzeZn5il72QBWHPXbA@blem6vatsr
         useCreateIndex: true,
     })
     .then(db => console.log("DB is connected") + db)
-    .catch(err => console.error(err))
+    .catch(err => console.error(err));
