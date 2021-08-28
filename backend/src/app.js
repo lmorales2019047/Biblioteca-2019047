@@ -12,5 +12,6 @@ app.use(cors());
 app.use(morgan("dev"));
 
 app.use(require("./routes/login"));
+app.use(require("./routes/user"));
 
 module.exports = app;

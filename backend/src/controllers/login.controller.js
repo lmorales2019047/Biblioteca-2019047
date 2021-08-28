@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const UserData = require("../models/UserData")
 const Role = require("../models/Role");
 const jwt = require("jsonwebtoken");
 
@@ -25,14 +26,14 @@ async function signIn(req, res) {
 }
 
 async function signUp(req, res) {
-    const { username, pwd } = req.body;
+    const { username, pwd, firstname, lastname, email } = req.body;
 
     const clientid = await Role.findOne({ role: "client" });
 
     if (!clientid) return res.status(500).json({ error: "Server error: contact developer" });
     if (await User.findOne({ username })) return res.status(400).json({ "error": "The user already exists" });
 
-    if (username && pwd) {
+    if (username && pwd && firstname && lastname && email) {
         if (username.length >= 4) {
             if (pwd.length >= 4) {
                 const data = new User({
@@ -41,9 +42,19 @@ async function signUp(req, res) {
                     role: clientid._id
                 });
 
+
                 data.save()
                     .then(doc => {
-                        res.json(doc)
+                        const userdata = new UserData({
+                            firstname,
+                            lastname,
+                            email,
+                            user: doc._id
+                        });
+
+                        userdata.save()
+                            .then(doc2 => res.json(doc2))
+                            .catch(err2 => console.error(err2))
                     })
                     .catch(err => console.error(err));
             } else {
