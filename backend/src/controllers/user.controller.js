@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const UserData = require("../models/UserData");
-const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
 async function getUsers(req, res) {
@@ -10,8 +9,6 @@ async function getUsers(req, res) {
 }
 
 async function getUserById(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
-    if (String(mongoose.Types.ObjectId(req.params.id)) !== String(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
     User.findOne({ _id: req.params.id })
         .then(doc => res.json(doc))
         .catch(err => console.error(err))
@@ -26,17 +23,15 @@ async function getMyUser(req, res) {
 }
 
 async function editUser(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
-    if (String(mongoose.Types.ObjectId(req.params.id)) !== String(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
-    if (!await User.findOne({ _id: req.params.id })) return res.status(400).json({ error: "User not found" });;
-
     const { username, pwd, firstname, lastname, email } = req.body;
 
     if (username || pwd || firstname || lastname || email) {
-        const user = new User({ username, pwd: await User.encryptPassword(pwd) });
-        const userdata = new UserData({ firstname, lastname, email, user: req.params.id });
-        await userdata.save();
-        user.save()
+        UserData.findOne({ user: req.params.id })
+            .then(async function(doc) {
+                await UserData.findByIdAndUpdate(doc._id, { firstname, lastname, email, user: data.id })
+            })
+            .catch(err => console.error(err))
+        User.findByIdAndUpdate(req.params.id, { username, pwd: await User.encryptPassword(pwd) })
             .then(doc => res.json(doc))
             .catch(err => console.error(err))
     } else {
@@ -49,10 +44,12 @@ async function editMyUser(req, res) {
     const { username, pwd, firstname, lastname, email } = req.body;
 
     if (username || pwd || firstname || lastname || email) {
-        const user = new User({ username, pwd: await User.encryptPassword(pwd) });
-        const userdata = new UserData({ firstname, lastname, email, user: data.id });
-        await userdata.save();
-        user.save()
+        UserData.findOne({ user: data.id })
+            .then(async function(doc) {
+                await UserData.findByIdAndUpdate(doc._id, { firstname, lastname, email, user: data.id })
+            })
+            .catch(err => console.error(err))
+        User.findByIdAndUpdate(data.id, { username, pwd: await User.encryptPassword(pwd) })
             .then(doc => res.json(doc))
             .catch(err => console.error(err))
     } else {
@@ -61,11 +58,11 @@ async function editMyUser(req, res) {
 }
 
 async function deleteUser(req, res) {
-    if (!mongoose.Types.ObjectId.isValid(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
-    if (String(mongoose.Types.ObjectId(req.params.id)) !== String(req.params.id)) return res.status(400).json({ error: "Invalid Id" });
-    if (!await User.findOne({ _id: req.params.id })) return res.status(400).json({ error: "User not found" });;
-
     try {
+        const userdata = await UserData.findOne({ user: req.params.id })
+        if (!userdata) return res.status(400).json({ error: "User does not have user data" });
+
+        await UserData.findByIdAndDelete(userdata.id);
         User.findByIdAndDelete(req.params.id)
             .then(doc => res.json(doc))
             .catch(err => console.error(err))
@@ -75,9 +72,14 @@ async function deleteUser(req, res) {
 }
 
 async function deleteMyUser(req, res) {
-    const data = jwt.verify(req.headers["x-access-token"], "2019047", { complete: false });
-
     try {
+        const data = jwt.verify(req.headers["x-access-token"], "2019047", { complete: false });
+
+        const userdata = await UserData.findOne({ user: data.id })
+        if (!userdata) return res.status(400).json({ error: "User does not have user data" });
+
+        await UserData.findByIdAndDelete(userdata.id);
+
         User.findByIdAndDelete(data.id)
             .then(doc => res.json(doc))
             .catch(err => console.error(err))
