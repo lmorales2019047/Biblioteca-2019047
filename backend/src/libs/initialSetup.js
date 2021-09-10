@@ -1,3 +1,4 @@
+const BibliographyType = require("../models/BibliographyType");
 const Role = require("../models/Role");
 const User = require("../models/User")
 
@@ -38,7 +39,25 @@ async function createAdminUser() {
     }
 }
 
+async function createBibliographyTypes() {
+    try {
+        const count = await BibliographyType.estimatedDocumentCount();
+
+        if (count > 0) return;
+
+        const values = await Promise.all([
+            new BibliographyType({ type: "book" }).save(),
+            new BibliographyType({ type: "magazine" }).save()
+        ]);
+
+        console.log(values);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 module.exports = {
     createRoles,
-    createAdminUser
+    createAdminUser,
+    createBibliographyTypes
 };

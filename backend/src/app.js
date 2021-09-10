@@ -2,10 +2,11 @@ const app = require("express")();
 const express = require("express")
 const morgan = require("morgan");
 const cors = require("cors");
-const { createRoles, createAdminUser } = require("./libs/initialSetup");
+const { createRoles, createAdminUser, createBibliographyTypes } = require("./libs/initialSetup");
 
 createRoles();
 createAdminUser();
+createBibliographyTypes();
 
 app.use(express.json());
 app.use(cors());
