@@ -1,0 +1,60 @@
+#login-row {
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+#left-login,
+#right-login {
+    padding: 20px 6%;
+}
+
+#left-login {
+    border-right: 1px solid gray;
+}
+
+.input-field {
+    width: 100%;
+}
+
+.tha-title {
+    text-align: center;
+    font-size: 22px;
+    margin: 15px;
+}
+
+.m-t-20 {
+    margin-top: 20px
+}
+
+.m-b-20 {
+    margin-bottom: 20px
+}
+
+.m-t-40 {
+    margin-top: 40px
+}
+
+.m-b-40 {
+    margin-bottom: 40px
+}
+
+.icon {
+    font-size: 160px;
+}
+
+.option-1 {
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    color: black;
+    transition: .2s ease all;
+    padding: 40px;
+    margin: 40px 0;
+    border-radius: 5px;
+    background-color: #ddd;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
+}
+
+.option-1:hover {
+    color: rgb(0, 0, 71);
+}
