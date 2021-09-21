@@ -1,1 +1,47 @@
-<p>admin-users works!</p>
+<main>
+    <h2 class="m-b-20">TODOS LOS USUARIOS</h2>
+    <a href="/admin/users/create" class="create-button-1">
+        <div class="f-centered create-button-button">
+            <i class="fas fa-plus"></i>
+        </div>
+        <h3>Crear Usuario</h3>
+    </a>
+    <div class="m-b-20">
+        <p>Ordenar por CUI:</p>
+        <select class="input-field" name="sort" id="x">
+            <option value="asc">Ascendente</option>
+            <option value="des">Descendente</option>
+        </select>
+    </div>
+    <div class="table-container">
+        <table class="m-table table-standard">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Carnet/CUI</th>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>123456</td>
+                        <td>usuario</td>
+                        <td>Usuario</td>
+                        <td>Usuario</td>
+                        <td>usuario@usuario.com</td>
+                        <td>Admin</td>
+                        <td><button class="ed-button edit-button"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="ed-button delete-button"><i class="fas fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</main>
