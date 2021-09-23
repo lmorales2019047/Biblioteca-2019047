@@ -1,1 +1,116 @@
-<p>admin-biblio works!</p>
+<main>
+    <h2 class="m-b-20">TODOS LOS LIBROS Y REVISTAS</h2>
+    <a routerLink="/admin/biblio/create" class="m-t-20 create-button-1">
+        <div class="f-centered create-button-button">
+            <i class="fas fa-plus"></i>
+        </div>
+        <h3>Crear Libro/Revista</h3>
+    </a>
+    <div class="m-b-20 m-t-20 sub-title-1">
+        <i class="fas fa-book"></i>
+        <h2>Libros</h2>
+    </div>
+
+    <div class="row">
+        <div class="f-left input-div">
+            <h5>Buscar Libro</h5>
+            <input class="input-field" type="search" placeholder="Search">
+            <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div style="margin-left: 20px" class="f-left m-b-20">
+            <h5>Ordenar por:</h5>
+            <select class="input-field" name="sort" id="x">
+                <option value="asc">Copias - Ascendente</option>
+                <option value="des">Copias - Descendente</option>
+                <option value="asc">Disponibles - Ascendente</option>
+                <option value="des">Disponibles - Descendente</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="m-table table-standard">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Edición</th>
+                    <th>Copias</th>
+                    <th>Disponibles</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem Ipsum</td>
+                        <td>Paco Lorem</td>
+                        <td>IV</td>
+                        <td>12</td>
+                        <td>15</td>
+                        <td><button class="ed-button edit-button"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="ed-button delete-button"><i class="fas fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+    <hr class="m-t-40">
+    <div class="m-b-20 m-t-20 sub-title-1">
+        <i class="fas fa-book-open"></i>
+        <h2>Revistas</h2>
+    </div>
+
+    <div class="row">
+        <div class="f-left input-div">
+            <h5>Buscar Revista</h5>
+            <input class="input-field" type="search" placeholder="Search">
+            <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div style="margin-left: 20px" class="f-left m-b-20">
+            <h5>Ordenar por:</h5>
+            <select class="input-field" name="sort" id="x">
+                <option value="asc">Copias - Ascendente</option>
+                <option value="des">Copias - Descendente</option>
+                <option value="asc">Disponibles - Ascendente</option>
+                <option value="des">Disponibles - Descendente</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="m-table table-standard">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Edición</th>
+                    <th>Copias</th>
+                    <th>Disponibles</th>
+                    <th>Frecuencia</th>
+                    <th>Ejemplares</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Lorem Ipsum</td>
+                        <td>Paco Lorem</td>
+                        <td>IV</td>
+                        <td>12</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td>15</td>
+                        <td><button class="ed-button edit-button"><i class="fas fa-edit"></i></button></td>
+                        <td><button class="ed-button delete-button"><i class="fas fa-times"></i></button></td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</main>

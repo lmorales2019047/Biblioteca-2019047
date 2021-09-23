@@ -23,7 +23,7 @@
 }
 
 .icon {
-    font-size: 160px;
+    font-size: 70px;
 }
 
 .option-1 {
@@ -33,12 +33,21 @@
     color: black;
     transition: .2s ease all;
     padding: 40px;
-    margin: 40px 0;
     border-radius: 5px;
     background-color: #ddd;
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1)
 }
 
 .option-1:hover {
-    color: rgb(0, 0, 71);
+    color: #182c41;
+    background-color: #ccc;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+#last-grid {
+    grid-column: 1/3;
 }

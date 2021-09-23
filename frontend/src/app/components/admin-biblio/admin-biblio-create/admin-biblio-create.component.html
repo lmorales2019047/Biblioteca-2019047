@@ -1,0 +1,14 @@
+<main>
+    <h2 class="m-b-20">Elija su tipo:</h2>
+    <form (submit)="selectType()" method="post">
+        <div class="input-div">
+            <select name="type" [(ngModel)]="type" class="select-type input-field">
+                <option value="book">Libro</option>
+                <option value="magazine">Revista</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn">Siguiente &raquo;</button>
+
+    </form>
+</main>

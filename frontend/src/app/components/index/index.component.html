@@ -1,21 +1,38 @@
 <main>
-    <div class="ta-center" style="margin-bottom: 20px">
+    <h2 class="m-b-20">¡BIENVENIDO CLIENTE!</h2>
+    <div class="grid-2">
+        <a class="option-1" routerLink="/search-biblio">
+            <i class="icon fas fa-book"></i>
+            <h3>Prestar Libro/Revista</h3>
+        </a>
+        <a class="option-1" routerLink="/my-books">
+            <i class="icon fas fa-undo"></i>
+            <h3>Devolver Libro/Revista</h3>
+        </a>
+        <a id="last-grid" class="last-grid option-1" routerLink="/history">
+            <i class="icon fas fa-history"></i>
+            <h3>Historial</h3>
+        </a>
+    </div>
+
+    <!-- ADMIN -->
+    <!--div class="ta-center" style="margin-bottom: 20px">
         <h1>¡BIENVENIDO ADMINISTRADOR!</h1>
     </div>
     <div class="grid-layout-2">
         <div class="div-option f-centered">
-            <a class="option-1" href="/admin/users">
+            <a class="option-1" routerLink="/admin/users">
                 <i class="icon fas fa-user-circle"></i>
                 <h1>Usuarios</h1>
             </a>
         </div>
         <div class="div-option f-centered" style="border-left: 1px solid gray;">
-            <a class="option-1" href="#">
+            <a class="option-1" routerLink="/admin/biblio">
                 <i class="icon fas fa-book"></i>
                 <h1>Libros/Revistas</h1>
             </a>
         </div>
-    </div>
+    </div-->
 
     <!-- GENERAL -->
     <!--div class="ta-center">
